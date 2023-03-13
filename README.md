@@ -1,73 +1,62 @@
-# Module-11-Challenge
+# Module-11 Challenge
 
-### Deliverable 1: A Jupyter notebook containing code that scrapes the Mars news titles and preview text.
+###### *Note: The original starter notebooks indicated this was Module 12, which I corrected in the included notebooks because this is Module 11.
 
-### Deliverable 2: A Jupyter notebook containing code that scrapes the Mars weather data and that cleans, visualizes, and analyzes that data.
+### Mars News Scraper
 
-### Part 1: Scrape Titles and Preview Text from Mars News
+This notebook uses Splinter and BeautifulSoup to scrape the [Mars News](https://static.bc-edx.com/data/web/mars_news/index.html) site for titles and text of news articles, and stores the results.
 
-Open the Jupyter Notebook in the starter code folder named `part_1_mars_news.ipynb`. You will work in this code as you follow the steps below to scrape the Mars News website.
+#### Requirements
 
-1. Use automated browsing to visit the [Mars news site](https://static.bc-edx.com/data/web/mars_news/index.html) [**Links to an external site.**](https://static.bc-edx.com/data/web/mars_news/index.html). Inspect the page to identify which elements to scrape.
-2. Create a Beautiful Soup object and use it to extract text elements from the website.
-3. Extract the titles and preview text of the news articles that you
-   scraped. Store the scraping results in Python data structures as
-   follows:
+* Python
+* Splinter
+* BeautifulSoup
+* JSON
 
-   * Store each title-and-preview pair in a Python dictionary and, give each dictionary two keys: `title` and `preview`. An example is the following:
-     ```python
-     {'title': "NASA's MAVEN Observes Martian Light Show Caused by Major Solar Storm", 
-      'preview': "For the first time in its eight years orbiting Mars, NASA’s MAVEN mission witnessed two different types of ultraviolet aurorae simultaneously, the result of solar storms that began on Aug. 27."}
-     ```
-   * Store all the dictionaries in a Python list.
-   * Print the list in your notebook.
-4. Optionally, store the scraped data in a file (to ease sharing the
-   data with others). To do so, export the scraped data to a JSON file.
-   (Note: there will be no extra points for completing this.)
+#### Usage
 
-### Part 2: Scrape and Analyze Mars Weather Data
+Run part_1_mars_news.ipynb, which will open the [Mars News](https://static.bc-edx.com/data/web/mars_news/index.html) site, scrape the website, and store the titles and preview text of news articles. You'll then be able to view the results stored in the mars_news_dictionary. Additionally, the information is exported to a JSON file (mars_news_dictionary.json) where the data can also be viewed, which eases the sharing with others.
 
-Open the Jupyter Notebook in the starter code folder named `part_2_mars_weather.ipynb`. You will work in this code as you follow the steps below to scrape and analyze Mars weather data.
+### Mars Weather Data Scraper
 
-1. Use automated browsing to visit the [Mars Temperature Data Site](https://static.bc-edx.com/data/web/mars_facts/temperature.html)
+This notebook uses Splinter and BeautifulSoup to scrape the [Mars Temperature Data](https://static.bc-edx.com/data/web/mars_facts/temperature.html) site to collect the weather information. It then analyzes the data.
 
-[**Links to an external site.**](https://static.bc-edx.com/data/web/mars_facts/temperature.html). Inspect the page to identify which elements to scrape. Note that the URL is `https://static.bc-edx.com/data/web/mars_facts/temperature.html`.
+#### Requirements
 
-**hint: To identify which elements to scrape, you might want to inspect the
-page by using Chrome DevTools to discover whether the table contains
-usable classes.**
+* Python
+* Splinter
+* BeautifulSoup
+* MatPlotLib
+* Pandas
+* Numpy
 
-2. Create a Beautiful Soup object and use it to scrape the data in the
-   HTML table. Note that this can also be achieved by using the Pandas `read_html` function. However, use Beautiful Soup here to continue sharpening your web scraping skills.
-3. Assemble the scraped data into a Pandas DataFrame. The columns should
-   have the same headings as the table on the website. Here’s an
-   explanation of the column headings:
+#### Usage
 
-* `id`: the identification number of a single transmission from the Curiosity rover
-* `terrestrial_date`: the date on Earth
-* `sol`: the number of elapsed sols (Martian days) since Curiosity landed on Mars
-* `ls`: the solar longitude
-* `month`: the Martian month
-* `min_temp`: the minimum temperature, in Celsius, of a single Martian day (sol)
-* `pressure`: The atmospheric pressure at Curiosity's location
+Run part_2_mars_news.ipynb, which will open the [Mars Temperature Data](https://static.bc-edx.com/data/web/mars_facts/temperature.html) site, scrape the website, and store data to then be analyzed. The script will output answers to 5 questions:
 
-4. Examine the data types that are currently associated with each
-   column. If necessary, cast (or convert) the data to the appropriate `datetime`, `int`, or `float` data types.
-   **hint**
+1. How many months exist on Mars?
 
-You can use the Pandas `astype` and `to_datetime` methods to accomplish this task.
+   * There are 12 months on Mars.
+2. How many Martian (and not Earth) days worth of data exist in the scraped dataset?
 
-* Analyze your dataset by using Pandas functions to answer the following questions:
+   * There are 1867 Martian days worth of data in the scraped dataset.
+3. What are the coldest and the warmest months on Mars (at the location of Curiosity)?
 
-  * How many months exist on Mars?
-  * How many Martian (and not Earth) days worth of data exist in the scraped dataset?
-  * What are the coldest and the warmest months on Mars (at the location of Curiosity)? To answer this question:
-    * Find the average minimum daily temperature for all of the months.
-    * Plot the results as a bar chart.
-  * Which months have the lowest and the highest atmospheric pressure on Mars? To answer this question:
-    * Find the average daily atmospheric pressure of all the months.
-    * Plot the results as a bar chart.
-  * About how many terrestrial (Earth) days exist in a Martian year? To answer this question:
-    * Consider how many days elapse on Earth in the time that Mars circles the Sun once.
-    * Visually estimate the result by plotting the daily minimum temperature.
-* Export the DataFrame to a CSV file.
+   * The coldest month in Curiosity's location is Month 3 with an average low temperature of -83.31°F.
+   * The hottest month in Curiosity's location is Month 8 with an average low temperature of -68.38°F.
+     ![1678693094047](image/README/1678693094047.png)
+4. Which months have the lowest and the highest atmospheric pressure on Mars?
+
+   * The month with the lowest atmospheric pressure is Month 6 with an average atmospheric pressure of 745.05
+   * The month with the highest atmospheric pressure is Month 9 with an average atmospheric pressure of 913.31
+
+     ![1678694391595](image/README/1678694391595.png)
+5. About how many terrestrial (Earth) days exist in a Martian year?
+
+   * There are about 679 terrestrial (Earth) days in a Martian year.
+
+     *This estimation is arrived at by averaging the length of terrestrial days between the dips and peaks in highest and lowest temperature and greatest and lowest atmospheric pressure. It is admittedly rudimentary, making some assumptions, and based on a limited dataset. It is also incorrect, according to [NASA](https://mars.nasa.gov/resources/21392/mars-in-a-minute-how-long-is-a-year-on-mars/), there are actually 687 Earth days in a Mars year.
+
+     ![1678693667698](image/README/1678693667698.png)![1678693674683](image/README/1678693674683.png)
+
+The mars_weather_df DataFrame is then saved as a CSV before the browser is closed.
