@@ -1,6 +1,4 @@
-# Module-11 Challenge
-
-###### *Note: The original starter notebooks indicated this was Module 12, which I corrected in the included notebooks because this is Module 11.
+# Mars News Scraper ReadMe
 
 ### Mars News Scraper
 
